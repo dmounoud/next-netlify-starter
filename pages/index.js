@@ -32,17 +32,20 @@ export default function Home() {
   )
 }
 
-const response = await openai.createCompletion({
-  model: "text-davinci-003",
-  prompt: "Create 1 exam questions for my interview with a waiter:\n",
-  temperature: 0,
-  max_tokens: 100,
-  top_p: 1,
-  frequency_penalty: 0.0,
-  presence_penalty: 0.0,
-  stop: ["\n"],
-});
+(async () => {
 
-const question = document.getElementById('question');
+  const response = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: "Create 1 exam questions for my interview with a waiter:\n",
+    temperature: 0,
+    max_tokens: 100,
+    top_p: 1,
+    frequency_penalty: 0.0,
+    presence_penalty: 0.0,
+    stop: ["\n"],
+  });
 
-question.value = response;
+  const question = document.getElementById('question');
+
+  question.value = response;
+})();
